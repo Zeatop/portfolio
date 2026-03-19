@@ -1,0 +1,31 @@
+.dev-dot {
+    margin-top: 1rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white; /* couleur de ton fond de page */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 2.5rem;
+
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: -0.20rem;
+        border-radius: 50%;
+        background: linear-gradient(90deg, #6025F5, #FF5555);
+        z-index: -1;
+    }
+
+    p {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, #6025F5, #FF5555);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}

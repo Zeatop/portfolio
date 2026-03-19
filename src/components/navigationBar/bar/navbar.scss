@@ -1,0 +1,47 @@
+.glass-card {
+  background: rgba(255, 255, 255, 0.1); /* transparent layer */
+  backdrop-filter: blur(7px);          /* the blur magic */
+  -webkit-backdrop-filter: blur(7px);  /* for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  color: #fff;
+
+  h1{
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.1); /* transparent layer */
+  backdrop-filter: blur(7px);          /* the blur magic */
+  -webkit-backdrop-filter: blur(7px);  /* for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  color: #fff;
+  gap:0.5rem;
+}
+
+.navbar {
+  box-sizing: border-box;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.nav-links {
+  display: flex;
+  padding: 1rem
+}

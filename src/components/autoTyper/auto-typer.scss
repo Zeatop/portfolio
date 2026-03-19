@@ -1,0 +1,15 @@
+.auto-typer{
+    display: flex;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    span {
+        // background: linear-gradient(90deg, #69bdd7, #907ecf, #c457b0);
+        // background: linear-gradient(90deg, #ff0000, #fdcf58);
+        background: linear-gradient(90deg, #6025F5, #FF5555);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}

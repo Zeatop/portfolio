@@ -1,0 +1,42 @@
+.experience-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+
+  // La ligne verticale centrale
+  .timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    background: linear-gradient(180deg, #6025F5, #FF5555);
+  }
+}
+
+.experience-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; // card | dot | date (ou inverse)
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+
+  &.left {
+    .exp-card { justify-self: end; }
+    .exp-date { justify-self: start; }
+  }
+
+  &.right {
+    .exp-card { justify-self: start; }
+    .exp-date { justify-self: end; }
+  }
+}
+
+.exp-date {
+  color: #a0aec0;
+  font-weight: bold;
+  white-space: nowrap;
+}

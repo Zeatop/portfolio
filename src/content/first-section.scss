@@ -1,0 +1,65 @@
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.first-section {
+    padding: 2rem;
+    margin: 2remx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: justify;
+
+    p {
+        width: 40vw;
+    }
+}
+
+.intro-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro-image {
+    position: relative;
+
+    img {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background-size: cover;
+        position: relative;
+        z-index: 1;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: conic-gradient(from var(--angle), #6025F5, #FF5555, #00d4ff, #6025F5);
+        filter: blur(15px);
+        opacity: 0.6;
+        animation: mymove 8s ease-in-out infinite, spin 10s linear infinite;
+        z-index: 0;
+    }
+}
+
+@keyframes mymove {
+  0%   { transform: translate(-50%, -50%) scale(0.95); }
+  40%  { transform: translate(-50%, -50%) scale(1.15); }
+  70%  { transform: translate(-50%, -50%) scale(1.05); }
+  100% { transform: translate(-50%, -50%) scale(0.95); }
+}
+
+@keyframes spin {
+  0%   { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
