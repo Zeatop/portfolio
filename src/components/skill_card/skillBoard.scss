@@ -1,0 +1,83 @@
+.skill-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 2rem;
+}
+
+.board-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+
+    &.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    &.fade-out {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
+.selection {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    // La pill glissante
+    .selection-pill {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        border-radius: 50px;
+        background: linear-gradient(90deg, #6025F5, #FF5555);
+        box-shadow: 0 4px 16px rgba(96, 37, 245, 0.35);
+        transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    button {
+        position: relative;
+        z-index: 1;
+        padding: 10px 22px;
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+
+        // Texte gradient par défaut
+        background: linear-gradient(90deg, #6025F5, #FF5555);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+
+        transition: transform 0.4s ease;
+
+        &:hover:not(.selected) {
+            transform: scale(1.1) translateY(-2px);
+        }
+
+        // Quand selected : texte blanc (la pill est derrière)
+        &.selected {
+            background: transparent;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: white;
+            background-clip: unset;
+        }
+    }
+}

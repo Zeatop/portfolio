@@ -1,24 +1,8 @@
 import Card from './card.tsx';
-import type { expDict } from './card.tsx';
 import DevDot from './devDot.tsx';
 import './experienceLine.scss';
+import experiences from './experiences.tsx';
 
-const experiences: expDict[] = [
-  {
-    company: 'Atlantix Media Inc',
-    position: 'Fullstack Developer',
-    start: '2025',
-    end: 'Present',
-    description: 'Fullstack developer, NextJS, React, Node.js, Figma',
-  },
-  {
-    company: 'Accenture ltda',
-    position: 'Senior Frontend Developer',
-    start: '2021',
-    end: '2024',
-    description: 'Techs solutions, mono-repositories with Nx, Angular...',
-  },
-];
 
 function ExperienceLine() {
   return (
@@ -27,18 +11,22 @@ function ExperienceLine() {
       {experiences.map((exp, index) => (
         <div
           key={index}
-          className={`experience-row ${index % 2 === 0 ? 'left' : 'right'}`}
+          className={`experience-row ${exp["type"] === 'job' ? 'left' : 'right'}`}
         >
-          {index % 2 === 0 && (
+          {exp.type === 'job' && (
             <>
               <Card expDict={exp} side="left" />
               <DevDot />
-              <span className="exp-date">{exp.start} – {exp.end}</span>
+              {exp.linkedTraining ? (
+                <Card expDict={{ ...exp.linkedTraining, type: 'training', start: exp.start, end: exp.end }} side="right" />
+              ) : (
+                <span></span>
+              )}
             </>
           )}
-          {index % 2 !== 0 && (
+          {exp["type"] === 'training' && (
             <>
-              <span className="exp-date">{exp.start} – {exp.end}</span>
+              <span></span>
               <DevDot />
               <Card expDict={exp} side="right" />
             </>
