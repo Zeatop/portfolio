@@ -15,6 +15,7 @@ const skills: skillProps[] = [
   { skill: 'SonarQube', img: 'sonar.svg', type: 'DevOps' },
   { skill: 'AWS', img: 'aws.svg', type: 'DevOps' },
   { skill: 'Postman', img: 'postman.svg', type: 'DevOps' },
+  { skill: 'Linux', img: 'linux.svg', type: 'DevOps' },
 
   // Frontend
   { skill: 'React', img: 'react.svg', type: 'Frontend' },

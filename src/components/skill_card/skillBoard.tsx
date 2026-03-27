@@ -3,7 +3,7 @@ import Card from './card.tsx';
 import './skillBoard.scss';
 import skills from './skills.tsx';
 
-const categories = ['Backend', 'DevOps', 'Frontend'];
+const categories = ['Backend', 'Frontend', 'DevOps'];
 const COOLDOWN_MS = 1500;
 
 function SkillBoard() {

@@ -1,27 +1,35 @@
-.skill-card{
-    display: flex;
-    flex-direction: column;
+.skill-card {
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;  // spacer | logo | texte
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    justify-items: center;
     background: #fff;
     border-radius: 1.5rem;
     padding: 1rem;
     text-align: center;
     box-shadow: 0px 3px 6px #c9c9c9;
-    width: 10vh;
-    height: 14vh;
+    width: 18vh;
+    height: 23vh;
     transition: transform 0.3s ease;
 
-     &:hover {
+    &:hover {
         transform: translateY(-10px);
         box-shadow: 0px 6px 12px #c9c9c9;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
+
+    // Spacer vide qui occupe la ligne du haut
+    &::before {
+        content: '';
+    }
+
     .skill-logo {
-        width: 60%;
-        height: 60%;
+        width: 70%;
+        height: 70%;
         object-fit: contain;
+    }
+
+    p {
+        align-self: end;
     }
 }
