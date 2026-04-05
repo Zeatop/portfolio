@@ -1,19 +1,38 @@
-// navBar.tsx
 import Button from '../button/button';
 import './navbar.scss';
+
+const scrollTo = (id: string) => {
+  const container = document.getElementById('scroll-container');
+  const target = document.getElementById(id);
+  if (!container || !target) return;
+
+  const containerRect = container.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+  const offset = targetRect.top - containerRect.top + container.scrollTop;
+
+  container.scrollTo({ top: offset, behavior: 'smooth' });
+};
+
+const downloadCV = () => {
+  const a = document.createElement('a');
+  a.href = '/LEO_JACKSON_CV.pdf';
+  a.download = 'LEO_JACKSON_CV.pdf';
+  a.click();
+};
 
 function Navbar() {
   return (
     <div className="navbar glass-card">
       <h1>Léo Jackson</h1>
       <div className="nav-links glass-nav">
-        <Button text="Skills" onClick={() => alert('Button clicked!')} />
-        <Button text="Projects" onClick={() => alert('Button clicked!')} />
-        <Button text="Education" onClick={() => alert('Button clicked!')} />
-        <Button text="Contact" onClick={() => alert('Button clicked!')} />
-        <Button text="Resume" isFramed onClick={() => alert('Button clicked!')} />
+        <Button text="Skills"    onClick={() => scrollTo('skills')}    />
+        <Button text="Projects"  onClick={() => scrollTo('projects')}  />
+        <Button text="Education" onClick={() => scrollTo('education')} />
+        <Button text="Contact"   onClick={() => scrollTo('contact')}   />
+        <Button text="Resume" isFramed onClick={downloadCV} />
       </div>
     </div>
   );
 }
+
 export default Navbar;

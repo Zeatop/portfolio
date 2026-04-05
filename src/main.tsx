@@ -17,17 +17,17 @@ createRoot(document.getElementById('root')!).render(
         <FirstSection />
       </section>
 
-      <section className="snap-section">
+      <section className="snap-section" id="skills">
         <SkillBoard />
       </section>
 
-      <section className="snap-section--tall">
+      <section className="snap-section--tall" id="projects">
         <div style={{ height: '10vh', flexShrink: 0 }} />
         <ProjectSection />
         <div style={{ height: '10vh', flexShrink: 0 }} />
       </section>
 
-      <section className="snap-section--tall">
+      <section className="snap-section--tall" id="education">
         {/* Espace en haut : laisse le temps d'arriver avant le premier dot */}
         <div style={{ height: '10vh', flexShrink: 0 }} />
 
@@ -37,7 +37,7 @@ createRoot(document.getElementById('root')!).render(
         <div style={{ height: '20vh', flexShrink: 0 }} />
       </section>
 
-      <section className="snap-section">
+      <section className="snap-section" id="contact">
         <ContactSection />
       </section>
 
