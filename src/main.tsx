@@ -5,6 +5,7 @@ import Navbar from './components/navigationBar/bar/navbar';
 import FirstSection from './content/first-section.tsx';
 import ExperienceLine from './components/experienceLine/experienceLine.tsx';
 import SkillBoard from './components/skill_card/skillBoard.tsx';
+import ProjectSection from './components/projects/projectSection.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,6 +18,12 @@ createRoot(document.getElementById('root')!).render(
 
       <section className="snap-section">
         <SkillBoard />
+      </section>
+
+      <section className="snap-section--tall">
+        <div style={{ height: '10vh', flexShrink: 0 }} />
+        <ProjectSection />
+        <div style={{ height: '10vh', flexShrink: 0 }} />
       </section>
 
       <section className="snap-section--tall">

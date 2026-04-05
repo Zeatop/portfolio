@@ -1,0 +1,64 @@
+.project-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+
+    h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin: 0;
+      color: #1a1a2e;
+      letter-spacing: -0.03em;
+
+      span {
+        background: linear-gradient(90deg, #6025F5, #FF5555);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #999;
+      margin: 0;
+    }
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    width: 100%;
+
+    @media (max-width: 720px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// ── Animation d'entrée ────────────────────────────────────
+// Stagger en damier : les cards du haut arrivent avant celles du bas
+// Direction alternée gauche/droite par colonne
+.project-card {
+  opacity: 0;
+  transform: translateX(var(--from, -40px)) translateY(16px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s ease,
+    border-color 0.32s ease;
+  transition-delay: var(--delay, 0s);
+
+  &.visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
