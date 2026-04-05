@@ -6,6 +6,7 @@ import FirstSection from './content/first-section.tsx';
 import ExperienceLine from './components/experienceLine/experienceLine.tsx';
 import SkillBoard from './components/skill_card/skillBoard.tsx';
 import ProjectSection from './components/projects/projectSection.tsx';
+import ContactSection from './components/contact/contactSection.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -34,6 +35,10 @@ createRoot(document.getElementById('root')!).render(
 
         {/* Espace en bas : le snap end se déclenche bien après le dernier élément */}
         <div style={{ height: '20vh', flexShrink: 0 }} />
+      </section>
+
+      <section className="snap-section">
+        <ContactSection />
       </section>
 
     </div>
