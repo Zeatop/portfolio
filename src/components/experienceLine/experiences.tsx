@@ -6,13 +6,26 @@ const experiences: expDict[] = [
     type: 'job',
     company: 'ProBTP',
     position: 'Alternance — Développeur full-stack',
-    start: 'Août 2023',
+    start: 'Août 2025',
     end: 'Juin 2026',
     description: 'Déploiements automatisés en environnements conteneurisés, développement et maintenance du wizard d\'installation des logiciels, outil d\'analyse d\'obsolescence pour conformité DORA, monitoring de l\'activité contributeurs Jahia.',
     linkedTraining: {
       company: 'Université Côte d\'Azur',
       position: 'M2 MIAGE MBDS',
       description: 'Systèmes distribués, administration cloud AWS, développement web (React, SpringBoot), IoT.',
+    },
+  },
+  {
+    type: 'job',
+    company: 'ProBTP',
+    position: 'Alternance — Développeur full-stack',
+    start: 'Août 2023',
+    end: 'Août 2025',
+    description: 'Déploiements automatisés en environnements conteneurisés, développement et maintenance du wizard d\'installation des logiciels, outil d\'analyse d\'obsolescence pour conformité DORA, monitoring de l\'activité contributeurs Jahia.',
+    linkedTraining: {
+      company: 'Openclassrooms',
+      position: 'Développeur d\'application',
+      description: 'Développement web (Django, React), POO, testing (pytest, unittest), APIs, déploiement automatisé.',
     },
   },
   {

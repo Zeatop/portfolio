@@ -8,13 +8,13 @@ const skills: skillProps[] = [
   { skill: 'Java', img: 'java.svg', type: 'Backend' },
   { skill: 'SpringBoot', img: 'spring.svg', type: 'Backend' },
   { skill: 'SQL', img: 'sql.svg', type: 'Backend' },
+  { skill: 'Postman', img: 'postman.svg', type: 'Backend' },
   // CI/CD & DevOps
   { skill: 'Git', img: 'git.svg', type: 'DevOps' },
   { skill: 'Docker', img: 'docker.svg', type: 'DevOps' },
   { skill: 'Jenkins', img: 'jenkins.svg', type: 'DevOps' },
   { skill: 'SonarQube', img: 'sonar.svg', type: 'DevOps' },
   { skill: 'AWS', img: 'aws.svg', type: 'DevOps' },
-  { skill: 'Postman', img: 'postman.svg', type: 'DevOps' },
   { skill: 'Linux', img: 'linux.svg', type: 'DevOps' },
 
   // Frontend
