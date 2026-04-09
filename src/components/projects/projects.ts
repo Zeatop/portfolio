@@ -16,7 +16,7 @@ const projects: Project[] = [
   {
     title: 'Judge',
     category: 'IA · RAG · Full-stack',
-    tagline: 'Assistant RAG de règles de jeux de société — ingère des PDFs, indexe via ChromaDB et répond en langage naturel avec sources citées.',
+    tagline: 'Assistant RAG de règles de jeux de société avec un focus sur Magic: The Gathering — ingère des PDFs, indexe via ChromaDB et répond en langage naturel avec sources citées.',
     description: 'Assistant de règles de jeux de société basé sur un pipeline RAG. Ingère des rulebooks PDF (format dual User/RAG), les indexe dans ChromaDB via embeddings Mistral, et répond en langage naturel aux questions de règles. Interface React/TypeScript avec retour de sources citées.',
     tags: ['Python', 'LangChain', 'ChromaDB', 'Mistral', 'Ollama', 'React', 'TypeScript', 'FastAPI', 'MongoDB'],
     status: 'En cours',
@@ -54,7 +54,7 @@ const projects: Project[] = [
     tagline: 'Wizard d\'installation modulaire piloté par des manifestes YAML distants — gestion des versions, variables d\'environnement, certificats et licences.',
     description: 'Wizard d\'installation modulaire conçu pour les environnements d\'entreprise. Référence les logiciels à déployer via des manifestes YAML dans un dépôt distant — ajout/suppression de softs sans toucher au code. Gère les variables d\'environnement, certificats, licences, et permet de switcher de version active ou de mettre à jour une configuration existante à la volée.',
     tags: ['Python', 'YAML', 'Git', 'Docker', 'Windows', 'DevOps'],
-    status: 'En cours',
+    status: 'Terminé',
     date: '2024',
     color: 'purple',
     github: 'https://github.com',

@@ -18,7 +18,6 @@ function SkillBoard() {
   const selected = categories[selectedIndex];
   const filtered = skills.filter(s => s.type === selected);
 
-  // Met à jour la position/taille de la pill selon le bouton actif
   useEffect(() => {
     const btn = buttonRefs.current[selectedIndex];
     const container = selectionRef.current;
@@ -69,8 +68,13 @@ function SkillBoard() {
 
   return (
     <div className="skill-board" ref={sectionRef}>
+
+      <div className="section-header">
+        <h2>Mes <span>compétences</span></h2>
+        <p>Les technos que j'utilise au quotidien</p>
+      </div>
+
       <div className="selection" ref={selectionRef}>
-        {/* Pill glissante */}
         <span
           className="selection-pill"
           style={{ left: pillStyle.left, width: pillStyle.width }}
@@ -86,6 +90,7 @@ function SkillBoard() {
           </button>
         ))}
       </div>
+
       <div className={`board-wrapper ${visible ? 'fade-in' : 'fade-out'}`}>
         {filtered.map((skill, index) => (
           <Card key={`${skill.skill}-${index}`} properties={skill} />

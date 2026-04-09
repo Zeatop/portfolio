@@ -5,6 +5,35 @@
     justify-content: center;
     gap: 2rem;
     padding: 2rem;
+
+    // ── Titre de section ──────────────────────────────────
+    .section-header {
+        align-self: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+
+        h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin: 0;
+            color: #1a1a2e;
+            letter-spacing: -0.03em;
+
+            span {
+                background: linear-gradient(90deg, #6025F5, #FF5555);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #999;
+            margin: 0;
+        }
+    }
 }
 
 .board-wrapper {
@@ -35,7 +64,6 @@
     justify-content: center;
     gap: 12px;
 
-    // La pill glissante
     .selection-pill {
         position: absolute;
         top: 0;
@@ -60,7 +88,6 @@
         border: none;
         background: transparent;
 
-        // Texte gradient par défaut
         background: linear-gradient(90deg, #6025F5, #FF5555);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -72,7 +99,6 @@
             transform: scale(1.1) translateY(-2px);
         }
 
-        // Quand selected : texte blanc (la pill est derrière)
         &.selected {
             background: transparent;
             -webkit-background-clip: unset;
