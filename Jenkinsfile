@@ -14,26 +14,20 @@ pipeline {
             }
         }
 
-        stage('Install') {
-            steps {
-                sh 'docker run --rm -v $(pwd):/app -w /app node:20-alpine npm ci'
-            }
-        }
-
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh '''
+                    sh """
                         docker run --rm \
-                            -v $(pwd):/usr/src \
-                            -e SONAR_HOST_URL=$SONAR_HOST_URL \
-                            -e SONAR_TOKEN=$SONAR_AUTH_TOKEN \
+                            -v \$(pwd):/usr/src \
+                            -e SONAR_HOST_URL=\$SONAR_HOST_URL \
+                            -e SONAR_TOKEN=\$SONAR_AUTH_TOKEN \
                             sonarsource/sonar-scanner-cli \
                             -Dsonar.projectKey=portfolio \
                             -Dsonar.sources=src \
-                            -Dsonar.host.url=$SONAR_HOST_URL \
-                            -Dsonar.token=$SONAR_AUTH_TOKEN
-                    '''
+                            -Dsonar.host.url=\$SONAR_HOST_URL \
+                            -Dsonar.token=\$SONAR_AUTH_TOKEN
+                    """
                 }
             }
         }
