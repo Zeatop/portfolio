@@ -24,7 +24,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <nav className="nav-bar-inner glass-nav">
-        <img src="//leo_logo_backless.png" alt="Logo" className="logo" />
+        <img src="/leo_logo_backless.png" alt="Logo" className="logo" />
         <div className="nav-links">
           <Button text="Skills"    onClick={() => scrollTo('skills')}    />
           <Button text="Projects"  onClick={() => scrollTo('projects')}  />
