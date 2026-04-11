@@ -19,7 +19,8 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {
                     sh """
                         docker run --rm \
-                            -v \$(pwd):/usr/src \
+                            --volumes-from jenkins \
+                            -w /var/jenkins_home/workspace/portfolio \
                             -e SONAR_HOST_URL=\$SONAR_HOST_URL \
                             -e SONAR_TOKEN=\$SONAR_AUTH_TOKEN \
                             sonarsource/sonar-scanner-cli \
