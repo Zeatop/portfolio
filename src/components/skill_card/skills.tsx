@@ -16,6 +16,10 @@ const skills: skillProps[] = [
   { skill: 'SonarQube', img: 'sonar.svg', type: 'DevOps' },
   { skill: 'AWS', img: 'aws.svg', type: 'DevOps' },
   { skill: 'Linux', img: 'linux.svg', type: 'DevOps' },
+  { skill: 'Kubernetes', img: 'Kubernetes.png', type: 'DevOps' },
+  { skill: 'Terraform', img: 'Terraform.webp', type: 'DevOps' },
+  { skill: 'Ansible', img: 'Ansible.png', type: 'DevOps' },
+  { skill: 'Proxmox', img: 'proxmox.png', type: 'DevOps' },
 
   // Frontend
   { skill: 'React', img: 'react.svg', type: 'Frontend' },
