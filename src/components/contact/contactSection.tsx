@@ -1,15 +1,11 @@
 import { useState } from 'react';
 import './contactSection.scss';
 
-// ── Obfuscation simple ──────────────────────────────────────
-// L'adresse est stockée en morceaux réassemblés au runtime.
-// Aucun scraper basique ne lira une adresse complète dans le source.
-const buildEmail = () => {
-  const parts = ['leo', '.', 'jackson', '@', 'pro', 'btp', '.', 'fr'];
-  return parts.join('');
-};
+// Endpoint backend. En dev, Vite proxifie /api vers localhost:3001.
+// En prod, même origine via nginx.
+const API_ENDPOINT = '/api/contact';
 
-// ── Icône envoi ─────────────────────────────────────────────
+// Icône envoi
 const SendIcon = () => (
   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
     strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -23,6 +19,7 @@ interface FormState {
   senderEmail: string;
   subject: string;
   message: string;
+  website: string; // honeypot anti-bot
 }
 
 interface FormErrors {
@@ -31,20 +28,24 @@ interface FormErrors {
   message?: string;
 }
 
+type Status = 'idle' | 'sending' | 'success' | 'error';
+
 function ContactSection() {
   const [form, setForm] = useState<FormState>({
     name: '',
     senderEmail: '',
     subject: '',
     message: '',
+    website: '',
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
+  const [status, setStatus] = useState<Status>('idle');
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const update = (field: keyof FormState) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setForm((prev) => ({ ...prev, [field]: e.target.value }));
-      // Efface l'erreur dès que l'user tape
       if (errors[field as keyof FormErrors]) {
         setErrors((prev) => ({ ...prev, [field]: undefined }));
       }
@@ -59,27 +60,36 @@ function ContactSection() {
       newErrors.senderEmail = 'Format d\'email invalide.';
     }
     if (!form.message.trim()) newErrors.message = 'Le message ne peut pas être vide.';
+    if (form.message.length > 5000) newErrors.message = 'Message trop long (5000 max).';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (status === 'sending') return;
     if (!validate()) return;
 
-    const to = buildEmail();
+    setStatus('sending');
+    setServerError(null);
 
-    // Corps du mail : on injecte l'expéditeur en première ligne
-    const body = [
-      `De : ${form.name} <${form.senderEmail}>`,
-      '',
-      form.message,
-    ].join('\n');
+    try {
+      const res = await fetch(API_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
 
-    const subject = form.subject.trim() || `Message de ${form.name}`;
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Envoi impossible.');
+      }
 
-    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
+      setStatus('success');
+      setForm({ name: '', senderEmail: '', subject: '', message: '', website: '' });
+    } catch (err) {
+      setStatus('error');
+      setServerError(err instanceof Error ? err.message : 'Erreur inconnue.');
+    }
   };
 
   return (
@@ -94,6 +104,19 @@ function ContactSection() {
         onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}
         noValidate
       >
+        {/* Honeypot : invisible pour les humains, les bots le remplissent */}
+        <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+          <label htmlFor="website">Ne pas remplir</label>
+          <input
+            id="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={form.website}
+            onChange={update('website')}
+          />
+        </div>
+
         {/* Ligne 1 : Nom | Email expéditeur */}
         <div className="form-row">
           <div className={`form-field ${errors.name ? 'error' : ''}`}>
@@ -105,6 +128,7 @@ function ContactSection() {
               value={form.name}
               onChange={update('name')}
               autoComplete="name"
+              disabled={status === 'sending'}
             />
             {errors.name && <span className="field-error">{errors.name}</span>}
           </div>
@@ -118,6 +142,7 @@ function ContactSection() {
               value={form.senderEmail}
               onChange={update('senderEmail')}
               autoComplete="email"
+              disabled={status === 'sending'}
             />
             {errors.senderEmail && <span className="field-error">{errors.senderEmail}</span>}
           </div>
@@ -125,13 +150,16 @@ function ContactSection() {
 
         {/* Sujet (optionnel) */}
         <div className="form-field">
-          <label htmlFor="contact-subject">Sujet <span style={{ fontWeight: 400, color: '#bbb' }}>(optionnel)</span></label>
+          <label htmlFor="contact-subject">
+            Sujet <span style={{ fontWeight: 400, color: '#bbb' }}>(optionnel)</span>
+          </label>
           <input
             id="contact-subject"
             type="text"
             placeholder="Objet de votre message"
             value={form.subject}
             onChange={update('subject')}
+            disabled={status === 'sending'}
           />
         </div>
 
@@ -143,12 +171,25 @@ function ContactSection() {
             placeholder="Votre message…"
             value={form.message}
             onChange={update('message')}
+            disabled={status === 'sending'}
           />
           {errors.message && <span className="field-error">{errors.message}</span>}
         </div>
 
-        <button type="submit" className="submit-btn">
-          Envoyer <SendIcon />
+        {/* Feedback de l'envoi */}
+        {status === 'success' && (
+          <div className="form-feedback success">
+            ✓ Message envoyé, merci ! Je vous réponds dès que possible.
+          </div>
+        )}
+        {status === 'error' && (
+          <div className="form-feedback error">
+            ✗ {serverError || 'Envoi impossible. Réessayez plus tard.'}
+          </div>
+        )}
+
+        <button type="submit" className="submit-btn" disabled={status === 'sending'}>
+          {status === 'sending' ? 'Envoi…' : 'Envoyer'} <SendIcon />
         </button>
       </form>
 
