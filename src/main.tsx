@@ -59,7 +59,7 @@ createRoot(document.getElementById('root')!).render(
       }}
     >
       <img
-        src="/windows-xp.gif"
+        src={`${import.meta.env.BASE_URL}windows-xp.gif`}
         alt="Windows XP"
         style={{ display: 'block', width: '100%' }}
       />
