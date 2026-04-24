@@ -42,5 +42,27 @@ createRoot(document.getElementById('root')!).render(
       </section>
 
     </div>
+    <a
+      href="https://leo-jackson.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        position: 'fixed',
+        bottom: '0.25rem',
+        left: '0.25rem',
+        zIndex: 9999,
+        display: 'block',
+        width: '90px',
+        borderRadius: '8px',
+        overflow: 'hidden',
+        cursor: 'pointer',
+      }}
+    >
+      <img
+        src="/windows-xp.gif"
+        alt="Windows XP"
+        style={{ display: 'block', width: '100%' }}
+      />
+    </a>
   </StrictMode>
 )
