@@ -196,9 +196,9 @@ function ContactSection() {
       <div className="contact-footer">
         <span>© {new Date().getFullYear()} Léo Jackson</span>
         <span>·</span>
-        <a href="https://github.com/leojackson" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/zeatop" target="_blank" rel="noopener noreferrer">GitHub</a>
         <span>·</span>
-        <a href="https://linkedin.com/in/leojackson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://linkedin.com/in/léo-jackson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </section>
   );

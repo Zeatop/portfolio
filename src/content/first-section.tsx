@@ -23,7 +23,16 @@ function FirstSection() {
                 <img src={placeholderImg}/>
             </div>
             <div className="logo-suite">
-                <LogoSuite srcs={[envelope_black, github_black, linkedin_black]} />
+                <LogoSuite srcs={[
+                    envelope_black,
+                    github_black,
+                    linkedin_black
+                    ]} 
+                    links={[
+                    "#contact",
+                    "https://github.com/zeatop",
+                    "https://linkedin.com/in/léo-jackson"
+                    ]} />
             </div>
         </div>
     </div>

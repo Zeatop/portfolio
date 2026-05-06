@@ -1,9 +1,9 @@
 import LogoButton from "./logoButton";
 import "./logoButton.scss";
 
-function LogoSuite({ srcs }: { srcs: string[] }) {
-  return srcs.map((src) => (
-    <LogoButton src={src} />
+function LogoSuite({ srcs, links }: { srcs: string[], links: string[] }) {
+  return srcs.map((src, index) => (
+    <LogoButton src={src} link={links[index]} />
   ));
 }
 
