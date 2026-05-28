@@ -14,9 +14,9 @@ function FirstSection() {
     <div className="first-section">
         <div className="intro-text">
         <AutoTyper strings={["Full-stack Developer.", "DevOps Engineer.", "Software Engineer."]} />
-        <p>I build scalable, high-performance applications using TypeScript, JavaScript, React, Node.js, AWS, and LLM orchestration.
-            From crafting intuitive frontends to designing robust APIs, cloud architecture, and intelligent AI workflows, I deliver quality code that drives real impact.
-            Passionate about solving complex challenges in fast-paced, collaborative environments. Ready to build something exceptional together</p>
+        <p>Je conçois des infrastructures scalables et des systèmes intelligents — de la pipeline CI/CD au cluster Kubernetes, 
+            en passant par des applications IA en production. À l'aise de la stack frontend (React, TypeScript) au backend (Python, Java, Node.js), avec un vrai attrait pour le DevOps et l'orchestration LLM. 
+            Contactez-moi pour votre prochain défi.</p>
         </div>
         <div className="intro-right">
             <div className="intro-image">

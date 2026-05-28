@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     text-align: justify;
     gap: 2rem;
 
@@ -29,32 +30,66 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     flex-shrink: 0;
 }
 
 .intro-image {
     position: relative;
+    width: 300px;
+    height: 370px;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+        width: 220px;
+        height: 290px;
+    }
 
     img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        z-index: 2;
+        // Montre tout en haut (tête dépasse) + clips les côtés/bas en arc de cercle
+        clip-path: path('M 0,0 L 300,0 L 300,220 A 150,150 0 0,1 0,220 Z');
+        filter: drop-shadow(0 8px 24px rgba(170, 59, 255, 0.15));
+
+        @media (max-width: 768px) {
+            clip-path: path('M 0,0 L 220,0 L 220,170 A 110,110 0 0,1 0,170 Z');
+        }
+    }
+
+    // Anneau plein — devant la photo, cercle complet
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 220px;
+        transform: translate(-50%, -50%);
         width: 300px;
         height: 300px;
         border-radius: 50%;
-        position: relative;
-        z-index: 1;
         border: 2px solid var(--accent-border);
-        box-shadow: 0 8px 32px rgba(170, 59, 255, 0.12);
+        z-index: 1;
+        pointer-events: none;
 
         @media (max-width: 768px) {
+            top: 170px;
             width: 220px;
             height: 220px;
         }
     }
 
+    // Anneau pointillés — derrière tout, tourne lentement
     &::before {
         content: '';
         position: absolute;
-        top: 50%;
         left: 50%;
+        top: 220px;
         transform: translate(-50%, -50%);
         width: 342px;
         height: 342px;
@@ -63,8 +98,10 @@
         opacity: 0.55;
         animation: spin-dashed 40s linear infinite;
         z-index: 0;
+        pointer-events: none;
 
         @media (max-width: 768px) {
+            top: 170px;
             width: 252px;
             height: 252px;
         }

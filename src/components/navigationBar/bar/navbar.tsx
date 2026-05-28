@@ -43,11 +43,11 @@ function Navbar() {
           </button>
         </div>
         <div className={`nav-links${menuOpen ? ' menu-open' : ''}`}>
-          <Button text="Skills"    onClick={() => nav('skills')}    />
-          <Button text="Projects"  onClick={() => nav('projects')}  />
-          <Button text="Education" onClick={() => nav('education')} />
+          <Button text="Compétences"    onClick={() => nav('skills')}    />
+          <Button text="Projets"  onClick={() => nav('projects')}  />
+          <Button text="Parcours" onClick={() => nav('education')} />
           <Button text="Contact"   onClick={() => nav('contact')}   />
-          <Button text="Resume" isFramed onClick={downloadCV} />
+          <Button text="Mon CV" isFramed onClick={downloadCV} />
         </div>
       </nav>
     </div>
