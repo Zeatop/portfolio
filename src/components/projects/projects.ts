@@ -40,7 +40,7 @@ const projects: Project[] = [
     title: 'Homelab',
     category: 'DevOps · Infrastructure · Cloud',
     tagline: 'Infrastructure bare-metal sous Proxmox avec Kubernetes, CI/CD Jenkins, monitoring ELK/Prometheus et déploiement continu de projets persos en production.',
-    description: 'Homelab personnel sur serveur physique (AMD Ryzen 7 5800H, 28 Go RAM) orchestré via Proxmox VE. Architecture complète : firewall/routeur OPNsense, cluster Kubernetes 3 nœuds, pipeline CI/CD Jenkins + SonarQube, registry Docker privé, stack de monitoring ELK + Prometheus/Grafana, VPN WireGuard, et DNS interne Unbound. Infrastructure provisionnée en IaC avec Terraform et Ansible. Héberge en production Judge AI, le portfolio XP et Pixel War.',
+    description: 'Homelab personnel sur serveur physique (AMD Ryzen 7 5800H, 28 Go RAM) orchestré via Proxmox VE. Architecture complète : firewall/routeur OPNsense, cluster Kubernetes 3 nœuds, pipeline CI/CD Jenkins + SonarQube, registry Docker privé, stack de monitoring ELK + Prometheus/Grafana, VPN WireGuard, et DNS interne Unbound. Infrastructure provisionnée en IaC avec Terraform et Ansible. Héberge en production divers projets.',
     tags: ['Proxmox', 'Kubernetes', 'Terraform', 'Ansible', 'Jenkins', 'Docker', 'Traefik', 'OPNsense', 'Prometheus', 'Grafana', 'ELK'],
     status: 'Terminé',
     date: '2025',
