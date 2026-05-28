@@ -6,6 +6,11 @@
     gap: 2rem;
     padding: 2rem;
 
+    @media (max-width: 768px) {
+        padding: 0.5rem 0;
+        gap: 1.25rem;
+    }
+
     // ── Titre de section ──────────────────────────────────
     .section-header {
         align-self: flex-start;
@@ -38,13 +43,19 @@
 
 .board-wrapper {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
     gap: 20px;
+    max-width: calc(5 * 18vh + 4 * 20px);
     transition: opacity 0.25s ease, transform 0.25s ease;
-    grid-template-columns: repeat(5, minmax(0, 18vh));
+
+    @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: unset;
+        gap: 10px;
+        width: 100%;
+    }
 
 
     &.fade-in {

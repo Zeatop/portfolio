@@ -4,6 +4,10 @@
     font-weight: bold;
     margin-bottom: 1rem;
 
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+
     span {
         // background: linear-gradient(90deg, #69bdd7, #907ecf, #c457b0);
         // background: linear-gradient(90deg, #ff0000, #fdcf58);

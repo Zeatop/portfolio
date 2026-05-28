@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from '../button/button';
 import './navbar.scss';
 
@@ -21,15 +22,31 @@ const downloadCV = () => {
 };
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const nav = (id: string) => {
+    scrollTo(id);
+    setMenuOpen(false);
+  };
+
   return (
     <div className="navbar">
       <nav className="nav-bar-inner glass-nav">
-        <img src="/safemode/leo_logo_backless.png" alt="Logo" className="logo" />
-        <div className="nav-links">
-          <Button text="Skills"    onClick={() => scrollTo('skills')}    />
-          <Button text="Projects"  onClick={() => scrollTo('projects')}  />
-          <Button text="Education" onClick={() => scrollTo('education')} />
-          <Button text="Contact"   onClick={() => scrollTo('contact')}   />
+        <div className="nav-row">
+          <img src="/safemode/leo_logo_backless.png" alt="Logo" className="logo" />
+          <button
+            className={`hamburger${menuOpen ? ' is-open' : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menu"
+          >
+            <span /><span /><span />
+          </button>
+        </div>
+        <div className={`nav-links${menuOpen ? ' menu-open' : ''}`}>
+          <Button text="Skills"    onClick={() => nav('skills')}    />
+          <Button text="Projects"  onClick={() => nav('projects')}  />
+          <Button text="Education" onClick={() => nav('education')} />
+          <Button text="Contact"   onClick={() => nav('contact')}   />
           <Button text="Resume" isFramed onClick={downloadCV} />
         </div>
       </nav>

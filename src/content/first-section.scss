@@ -1,19 +1,27 @@
-@property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-}
-
 .first-section {
     padding: 2rem;
-    margin: 2remx;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     text-align: justify;
+    gap: 2rem;
 
     p {
         width: 40vw;
+        max-width: 620px;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        padding: 1rem 0;
+        gap: 2rem;
     }
 }
 
@@ -21,6 +29,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .intro-image {
@@ -30,36 +39,39 @@
         width: 300px;
         height: 300px;
         border-radius: 50%;
-        background-size: cover;
         position: relative;
         z-index: 1;
+        border: 2px solid var(--accent-border);
+        box-shadow: 0 8px 32px rgba(170, 59, 255, 0.12);
+
+        @media (max-width: 768px) {
+            width: 220px;
+            height: 220px;
+        }
     }
 
-    &::after {
+    &::before {
         content: '';
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 300px;
-        height: 300px;
+        width: 342px;
+        height: 342px;
         border-radius: 50%;
-        background: conic-gradient(from var(--angle), #6025F5, #FF5555, #00d4ff, #6025F5);
-        filter: blur(15px);
-        opacity: 0.6;
-        animation: mymove 8s ease-in-out infinite, spin 10s linear infinite;
+        border: 1.5px dashed var(--accent-border);
+        opacity: 0.55;
+        animation: spin-dashed 40s linear infinite;
         z-index: 0;
+
+        @media (max-width: 768px) {
+            width: 252px;
+            height: 252px;
+        }
     }
 }
 
-@keyframes mymove {
-  0%   { transform: translate(-50%, -50%) scale(0.95); }
-  40%  { transform: translate(-50%, -50%) scale(1.15); }
-  70%  { transform: translate(-50%, -50%) scale(1.05); }
-  100% { transform: translate(-50%, -50%) scale(0.95); }
-}
-
-@keyframes spin {
-  0%   { --angle: 0deg; }
-  100% { --angle: 360deg; }
+@keyframes spin-dashed {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
 }

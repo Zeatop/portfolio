@@ -124,6 +124,12 @@
     cursor: pointer;
     transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
 
+    @media (max-width: 768px) {
+      align-self: unset;
+      width: 100%;
+      justify-content: center;
+    }
+
     svg {
       width: 15px;
       height: 15px;

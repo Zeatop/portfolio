@@ -27,6 +27,24 @@
   }
 }
 
+// ── Desktop view ──────────────────────────────────────────
+
+.experience-desktop-view {
+  display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.experience-mobile-view {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
 .experience-timeline {
   position: relative;
   display: flex;
@@ -131,5 +149,353 @@
 
   .exp-date {
     align-self: flex-start;
+  }
+}
+
+// ── Mobile timeline ───────────────────────────────────────
+
+.mobile-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 1.5rem;
+}
+
+.mobile-timeline-line {
+  position: absolute;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  left: 0.45rem;
+  width: 2px;
+  background: linear-gradient(180deg, #6025F5, #FF5555);
+  border-radius: 2px;
+}
+
+.mobile-exp-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.9rem 0.5rem 0.9rem 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: background 0.2s;
+  border-radius: 12px;
+
+  &:hover,
+  &:focus-visible {
+    background: rgba(96, 37, 245, 0.04);
+  }
+
+  &:active {
+    background: rgba(96, 37, 245, 0.08);
+  }
+}
+
+.mobile-exp-dot {
+  position: absolute;
+  left: -1.5rem;
+  top: 1.1rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6025F5, #FF5555);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(96, 37, 245, 0.15);
+
+  // Dot spécial alternance : anneau gradient + centre blanc
+  &--alternance {
+    width: 14px;
+    height: 14px;
+    left: calc(-1.5rem - 2px);
+    top: 1.4rem;
+    background: linear-gradient(135deg, #6025F5, #FF5555);
+    box-shadow: 0 0 0 3px rgba(96, 37, 245, 0.2);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      background: #fff;
+      border-radius: 50%;
+    }
+  }
+}
+
+.mobile-exp-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.mobile-exp-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+  width: fit-content;
+
+  &--job {
+    background: rgba(96, 37, 245, 0.1);
+    color: #6025F5;
+  }
+
+  &--training {
+    background: rgba(255, 85, 85, 0.1);
+    color: #FF5555;
+  }
+
+  &--alternance {
+    background: linear-gradient(90deg, rgba(96, 37, 245, 0.12), rgba(255, 85, 85, 0.12));
+    color: #7c3aed;
+    border: 1px solid rgba(96, 37, 245, 0.2);
+  }
+}
+
+// ── Item alternance ───────────────────────────────────────
+
+.mobile-exp-item--alternance {
+  align-items: flex-start;
+  background: linear-gradient(135deg, rgba(96, 37, 245, 0.02), rgba(255, 85, 85, 0.02));
+  border: 1px solid rgba(96, 37, 245, 0.08);
+  border-radius: 14px;
+  padding: 1rem 0.75rem 1rem 1.5rem;
+
+  &:hover,
+  &:focus-visible {
+    background: linear-gradient(135deg, rgba(96, 37, 245, 0.06), rgba(255, 85, 85, 0.06));
+    border-color: rgba(96, 37, 245, 0.2);
+  }
+}
+
+.mobile-exp-alternance-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.65rem;
+}
+
+.mobile-exp-dual {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mobile-exp-dual-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem 0;
+
+  .mobile-exp-badge {
+    margin-bottom: 0.1rem;
+  }
+}
+
+.mobile-exp-dual-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(96, 37, 245, 0.15), rgba(255, 85, 85, 0.15));
+  margin: 0;
+}
+
+.mobile-exp-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  line-height: 1.3;
+}
+
+.mobile-exp-company {
+  font-size: 0.8rem;
+  color: #6025F5;
+  font-weight: 500;
+}
+
+.mobile-exp-dates {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.mobile-exp-arrow {
+  font-size: 1.2rem;
+  color: #ccc;
+  align-self: center;
+  flex-shrink: 0;
+  transition: transform 0.2s, color 0.2s;
+
+  .mobile-exp-item:hover & {
+    transform: translateX(3px);
+    color: #6025F5;
+  }
+}
+
+// ── Modal slide-up ────────────────────────────────────────
+
+.exp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-end;
+  animation: backdrop-in 0.25s ease;
+}
+
+@keyframes backdrop-in {
+  from { background: rgba(0, 0, 0, 0); }
+  to   { background: rgba(0, 0, 0, 0.45); }
+}
+
+.exp-modal-sheet {
+  background: #fff;
+  border-radius: 1.5rem 1.5rem 0 0;
+  padding: 1.5rem 1.5rem 2rem;
+  width: 100%;
+  max-height: 80svh;
+  overflow-y: auto;
+  position: relative;
+  animation: sheet-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-overflow-scrolling: touch;
+}
+
+@keyframes sheet-in {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.exp-modal-handle {
+  width: 36px;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  margin: 0 auto 1.25rem;
+}
+
+.exp-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: #f4f3f8;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+
+  &:hover { background: #ebe8f5; color: #6025F5; }
+}
+
+.exp-modal-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+
+  &--job {
+    background: rgba(96, 37, 245, 0.1);
+    color: #6025F5;
+  }
+
+  &--training {
+    background: rgba(255, 85, 85, 0.1);
+    color: #FF5555;
+  }
+
+  &--alternance {
+    background: linear-gradient(90deg, rgba(96, 37, 245, 0.12), rgba(255, 85, 85, 0.12));
+    color: #7c3aed;
+    border: 1px solid rgba(96, 37, 245, 0.2);
+  }
+}
+
+// ── Blocs dual alternance dans le modal ───────────────────
+
+.exp-modal-dual-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp-modal-dual-section {
+  padding: 0.25rem 0;
+
+  .exp-modal-title {
+    margin-top: 0.1rem;
+  }
+}
+
+.exp-modal-dual-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(96, 37, 245, 0.15), rgba(255, 85, 85, 0.15));
+  margin: 0.75rem 0;
+}
+
+.exp-modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 0.2rem;
+  padding-right: 2rem;
+}
+
+.exp-modal-company {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6025F5;
+  margin: 0 0 0.15rem;
+}
+
+.exp-modal-dates {
+  font-size: 0.78rem;
+  color: #aaa;
+  margin: 0 0 1rem;
+}
+
+.exp-modal-desc {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.65;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.exp-modal-linked {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #f0eef8;
+
+  .exp-modal-linked-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-modal-linked-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0 0 0.2rem;
   }
 }

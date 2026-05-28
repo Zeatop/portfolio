@@ -12,6 +12,13 @@
     height: 23vh;
     transition: transform 0.3s ease;
 
+    @media (max-width: 768px) {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        min-height: 90px;
+    }
+
     &:hover {
         transform: translateY(-10px);
         box-shadow: 0px 6px 12px #c9c9c9;

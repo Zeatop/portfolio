@@ -3,6 +3,11 @@
   width: 75px;
   object-fit: contain;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    height: 52px;
+    width: 52px;
+  }
 }
 
 .glass-nav {
@@ -25,6 +30,11 @@
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
+
+  @media (max-width: 768px) {
+    padding: 8px 12px;
+    align-items: flex-start;
+  }
 }
 
 .nav-bar-inner {
@@ -32,10 +42,103 @@
   align-items: center;
   gap: 0.75rem;
   padding: 10px 12px 10px 20px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+    padding: 8px 12px 8px 16px;
+    gap: 0;
+    border-radius: 24px;
+  }
 }
 
+// ── Ligne logo + burger (mobile uniquement) ────────────────
+.nav-row {
+  display: contents; // transparent sur desktop
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+// ── Liens de navigation ────────────────────────────────────
 .nav-links {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+
+  @media (max-width: 768px) {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.3rem;
+    padding: 0.5rem 0 0.25rem;
+    overflow: hidden;
+
+    &.menu-open {
+      display: flex;
+      animation: nav-open 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+      button {
+        animation: btn-in 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+        &:nth-child(1) { animation-delay: 0.03s; }
+        &:nth-child(2) { animation-delay: 0.07s; }
+        &:nth-child(3) { animation-delay: 0.11s; }
+        &:nth-child(4) { animation-delay: 0.15s; }
+        &:nth-child(5) { animation-delay: 0.19s; }
+      }
+    }
+
+    button {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+}
+
+@keyframes nav-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes btn-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+// ── Hamburger ──────────────────────────────────────────────
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #111;
+    border-radius: 2px;
+  }
+
+  &.is-open {
+    transform: rotate(90deg);
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
 }

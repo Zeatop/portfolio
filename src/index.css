@@ -137,6 +137,10 @@ body {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+
+  @media (max-width: 768px) {
+    scroll-snap-type: none;
+  }
 }
 
 /* ── Sections standard : tiennent en 100svh ── */
@@ -145,13 +149,23 @@ body {
   scroll-snap-stop: always;
   height: 100svh;
   width: 75vw;
-  max-width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 6rem 2rem 2rem;
+
+  @media (max-width: 768px) {
+    scroll-snap-align: none;
+    scroll-snap-stop: unset;
+    height: auto;
+    min-height: 100svh;
+    width: 100%;
+    padding: 7rem 1.25rem 2rem;
+    justify-content: flex-start;
+  }
 }
 
 /* ── Section longue (ex: ExperienceLine) ──
@@ -163,12 +177,25 @@ body {
   height: auto;
   min-height: 100svh;
   width: 75vw;
-  max-width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   padding: 6rem 2rem 4rem;
+
+  @media (max-width: 768px) {
+    scroll-snap-align: none;
+    width: 100%;
+    padding: 6rem 1.25rem 3rem;
+  }
+}
+
+/* ── Gif Windows caché sur mobile ── */
+.windows-gif-link {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
 }
 
 h1,

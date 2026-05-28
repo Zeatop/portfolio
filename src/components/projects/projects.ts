@@ -1,28 +1,27 @@
 export interface Project {
   title: string;
   category: string;
-  tagline: string;        // Résumé court (1 phrase max) affiché sur la card
-  description: string;   // Description longue (pour un éventuel modal)
+  tagline: string;
+  description: string;
   tags: string[];
   status: 'En cours' | 'Terminé';
   date: string;
-  color: 'purple' | 'red' | 'teal' | 'amber'; // couleur thème de la card
+  color: 'purple' | 'red' | 'teal' | 'amber';
   github?: string;
   link?: string;
 }
 
 const projects: Project[] = [
-
   {
     title: 'Judge',
     category: 'IA · RAG · Full-stack',
     tagline: 'Assistant RAG de règles de jeux de société avec un focus sur Magic: The Gathering — ingère des PDFs, indexe via ChromaDB et répond en langage naturel avec sources citées.',
     description: 'Assistant de règles de jeux de société basé sur un pipeline RAG. Ingère des rulebooks PDF (format dual User/RAG), les indexe dans ChromaDB via embeddings Mistral, et répond en langage naturel aux questions de règles. Interface React/TypeScript avec retour de sources citées.',
     tags: ['Python', 'LangChain', 'ChromaDB', 'Mistral', 'Ollama', 'React', 'TypeScript', 'FastAPI', 'MongoDB'],
-    status: 'En cours',
+    status: 'Terminé',
     date: '2026',
     color: 'purple',
-    link: 'https://leojackson.dev',
+    link: 'https://judgeai.app',
     github: 'https://github.com/Zeatop/Judge',
   },
   {
@@ -34,8 +33,19 @@ const projects: Project[] = [
     status: 'Terminé',
     date: '2026',
     color: 'purple',
-    link: 'https://leojackson.dev',
+    link: 'https://leojackson.com',
     github: 'https://github.com/Zeatop/portfolio-xp',
+  },
+  {
+    title: 'Homelab',
+    category: 'DevOps · Infrastructure · Cloud',
+    tagline: 'Infrastructure bare-metal sous Proxmox avec Kubernetes, CI/CD Jenkins, monitoring ELK/Prometheus et déploiement continu de projets persos en production.',
+    description: 'Homelab personnel sur serveur physique (AMD Ryzen 7 5800H, 28 Go RAM) orchestré via Proxmox VE. Architecture complète : firewall/routeur OPNsense, cluster Kubernetes 3 nœuds, pipeline CI/CD Jenkins + SonarQube, registry Docker privé, stack de monitoring ELK + Prometheus/Grafana, VPN WireGuard, et DNS interne Unbound. Infrastructure provisionnée en IaC avec Terraform et Ansible. Héberge en production Judge AI, le portfolio XP et Pixel War.',
+    tags: ['Proxmox', 'Kubernetes', 'Terraform', 'Ansible', 'Jenkins', 'Docker', 'Traefik', 'OPNsense', 'Prometheus', 'Grafana', 'ELK'],
+    status: 'Terminé',
+    date: '2025',
+    color: 'purple',
+    github: 'https://github.com/Zeatop',
   },
   {
     title: 'QuestlyTales',

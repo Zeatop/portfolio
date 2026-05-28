@@ -1,5 +1,5 @@
 import AutoTyper from "../components/autoTyper/react-typed";
-import placeholderImg from "../assets/placeholder.png";
+import placeholderImg from "../assets/hero.png";
 import LogoSuite from "../components/logoButtons/logoSuite";
 import envelope_black from "../assets/envelope_black.svg";
 import github_black from "../assets/github_black.svg";

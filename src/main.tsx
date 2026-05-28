@@ -43,6 +43,7 @@ createRoot(document.getElementById('root')!).render(
 
     </div>
     <a
+      className="windows-gif-link"
       href="https://leo-jackson.com"
       target="_blank"
       rel="noopener noreferrer"
