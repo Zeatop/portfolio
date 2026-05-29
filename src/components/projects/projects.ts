@@ -33,7 +33,7 @@ const projects: Project[] = [
     status: 'Terminé',
     date: '2026',
     color: 'purple',
-    link: 'https://leojackson.com',
+    link: 'https://leo-jackson.com',
     github: 'https://github.com/Zeatop/portfolio-xp',
   },
   {
